@@ -1,47 +1,91 @@
-# Weather App
 
-Check the current weather on any city on the planet. Switch between metric and imperial units.
+# Weather App — Open-Meteo
 
-![Alt img](https://images.ctfassets.net/zlsyc9paq6sa/3uBrJ07WSM40FpolgjInHY/7d886cb4187b52194bf9b63c183a1d3a/1627637330_x.gif)
+## Présentation
 
-## Features
+Application météo mise à jour dans le cadre du test de positionnement Simplon.
 
-1. User's ability to search cities
+Ce projet est basé sur l'application Weather App de madzadev. L'objectif est de la modifier pour afficher les informations météo sur des écrans destinés aux usagers des transports en commun.
 
-2. Current local time and date
+## Modifications réalisées
 
-3. Temperatures and humidity
+- Remplacement de l'API OpenWeatherMap par Open-Meteo.
+- Création d'un fichier config.json pour définir la ville et ses coordonnées.
+- Suppression du moteur de recherche de villes.
+- Modification du traitement des données JSON pour conserver les composants existants.
+- Actualisation automatique des données météo toutes les heures.
+- Gestion des erreurs avec try/catch.
+- Désactivation du cache de l'API interne avec Cache-Control: no-store.
 
-4. Wind speed and direction
+## Fonctionnalités
 
-5. Sunrise and sunset times
+- Affichage de la météo de la ville configurée.
+- Température et température ressentie.
+- Humidité.
+- Vitesse et direction du vent.
+- Visibilité.
+- Heures de lever et de coucher du soleil.
+- Conversion entre les unités métriques et impériales.
 
-6. Metric vs Imperial system
+## Configuration
 
-7. Error handling and loading info
+Le fichier config.json permet de définir la ville dont on souhaite afficher la météo.
 
-## Installation
+Exemple pour Paris :
 
-1. `git clone https://github.com/madzadev/weather-app.git`
+```json
+{
+  "city": "Paris",
+  "latitude": 48.8566,
+  "longitude": 2.3522
+}
+```
 
-2. `cd weather-app`
+Pour changer de ville, il suffit de modifier son nom, sa latitude et sa longitude dans ce fichier.
 
-3. `npm install`
+## Technologies utilisées
 
-4. Log-in to [Openweathermap.com](https://openweathermap.org/)
+- HTML et CSS
+- JavaScript
+- React
+- Next.js
+- API Open-Meteo
+- JSON
+- Git et GitHub
 
-5. Create an API key
+## Installation et lancement
 
-6. `cp .env.example .env.local`
+1. Récupérer le projet depuis GitHub.
+2. Ouvrir le dossier du projet dans le Terminal.
+3. Installer les dépendances avec `npm install`.
+4. Démarrer l'application avec la commande :
 
-7. Paste API key for `OPENWEATHER_API_KEY`
+```bash
+NODE_OPTIONS=--openssl-legacy-provider npm run dev
+```
 
-8. `npm run dev`
+5. Ouvrir http://localhost:3000 dans un navigateur.
 
-## Contributions
+L'option de compatibilité Node.js est utilisée temporairement pour faire fonctionner cette ancienne version de Next.js.
 
-Any feature requests and pull requests are welcome!
+## Tests effectués
 
-## License
+- Vérification de l'affichage de la météo de Paris dans Firefox.
+- Vérification des réponses API dans l'onglet Réseau.
+- Test du rafraîchissement automatique avec un intervalle temporaire de 10 secondes.
+- Remise de l'intervalle à une heure après le test.
+- Vérification de la suppression de la recherche de ville.
+- Vérification de la conversion des unités.
+- Vérification du cache avec Cache-Control: no-store.
+- Vérification des modifications avec Git.
+- Compilation du projet avec `npm run build`.
 
-The project is under [MIT license](https://choosealicense.com/licenses/mit/).
+## Projet d'origine
+
+Application initiale créée par madzadev :
+
+https://github.com/madzadev/weather-app
+
+Mise à jour de l'application météo avec Open-Meteo dans le cadre du test de positionnement Simplon.
+
+Le projet d'origine est distribué sous licence MIT.
